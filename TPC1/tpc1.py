@@ -1,17 +1,9 @@
-number_of_players = 0
-able_players = 0
+FILE_PATH = "emd.csv"
+TOKEN = ","
 
-#multiset to store modalidades
-modalidades = set()
-
-#division numbers
-divisions_dist = [0] * 20
+#############################
 
 def parse_fields(fields):
-
-    global number_of_players
-    global able_players
-    global divisions_dist
 
     #_id,index,dataEMD,nome/primeiro,nome/último,idade,género,morada,modalidade,clube,email,federado,resultado
     line_data = {
@@ -29,28 +21,19 @@ def parse_fields(fields):
         "federado": fields[11] == "true",
         "resultado": fields[12] == "true"
     }
-
-    number_of_players += 1
-    modalidades.add(fields[8])
-
-    if(line_data["federado"]):
-        able_players += 1
-
-    index = line_data["idade"] // 5
-    divisions_dist[index] += 1
     
     return line_data
 
-def parse_csv(file_path):
+def parse_dataset(file_path, token):
     data = []
     column_names = []
     with open(file_path, 'r') as file:
-        for line in file:
+        for i,line in enumerate(file):
             # Split the line into fields using comma as delimiter
-            fields = line.strip().split(',')
+            fields = line.strip().split(token)
 
             #To store the values for each dict key
-            if (fields[0] == "_id"):
+            if (i == 0):
                 column_names = fields
             else:
                 line_data = parse_fields(fields)
@@ -58,37 +41,84 @@ def parse_csv(file_path):
 
     return data
 
-def print_modalidades():
-    modalidades_list = list(modalidades)
-    modalidades_list.sort()
+def list_modalidades(emd):
 
-    for str in modalidades_list:
-        print("- " + str)
+    modalidade = set()
 
-def print_able_players():
-    global number_of_players
-    global able_players
+    for line in emd:
+        modalidade.add(line["modalidade"])
 
-    print("Total number of players: " + str(number_of_players))
-    print("Percentage of Approved Players: " + str(able_players / number_of_players * 100) + "%")
-    print("Percentage of Not Approved Players: " + str((number_of_players - able_players) / number_of_players * 100) + "%")
+    modalidade_list = list(modalidade)
+    modalidade_list.sort()
 
-def print_division_dist():
-    global divisions_dist
-    global number_of_players
+    return modalidade_list
 
-    for i,v in enumerate(divisions_dist):
+def perc_ap(emd):
+
+    total = len(emd)
+
+    approved = 0
+    not_approved = 0
+    for line in emd:
+        if line["resultado"]:
+            approved += 1
+        else: 
+            not_approved += 1
+
+    return (approved/total, not_approved/total)
+
+def divisions_dist(emd, i=5):
+
+    division = [0] * (100 // i)
+
+    for line in emd:
+        index = line["idade"] // i
+        division[index] += 1
+
+    return (division,i)
+
+def print_modalidades(modalidades):
+
+    print("")
+    print("Lista de todas as modalidades (Ordem Alfabética):")
+    for m in modalidades:
+        print(" - " + m)
+
+def print_percentagens_approved(tuplo, total):
+
+    print("")
+    print("Número total de atletas: " + str(total))
+    print("Percentagem de atletas aprovados: " + str(tuplo[0]) + " (" + str(int(tuplo[0] * total)) + ") ")
+    print("Percentagem de atletas não aprovados: " + str(tuplo[1]) + " (" + str(int(tuplo[1] * total)) + ") ")
+
+def print_divisions(div, total):
+    
+    division = div[0]
+    interv = div[1]
+
+    print("")
+    print("Distribuição de idades (Intervalos de " + str(interv) +"):")
+    for i,v in enumerate(division):
         if v != 0:
-            print(str(i*5) + " - " + str(i*5 + 4) + ": " + str(v/number_of_players * 100) +"% (" + str(v) + ")" )
+            min_age = i * interv
+            max_age = ((i+1) * interv) - 1
+
+            percent = v / total * 100
+
+            print(str(min_age) + " - " + str(max_age) + ": " + str(percent) +"% (" + str(v) +")")
 
 
+def main():
+    emd = parse_dataset(FILE_PATH, TOKEN)
 
-csv_data = parse_csv('emd.csv')
-print(" ")
-print_modalidades()
-print(" ")
-print_able_players()
-print(" ")
-print_division_dist()
+    modalidades = list_modalidades(emd)
+    ap_n = perc_ap(emd)
+    division = divisions_dist(emd)
+
+    print_modalidades(modalidades)
+    print_percentagens_approved(ap_n, len(emd))
+    print_divisions(division, len(emd))
 
 
+if __name__ == '__main__':
+    main()
