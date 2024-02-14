@@ -14,12 +14,12 @@ A partir deste *dataset* tinhamos como objetivo conseguir obter os seguintes dad
 - Percentagens de atletas aptos e inaptos para a prática desportiva;
 - Distribuição de atletas por escalão etário (escalão = intervalo de 5 anos): ... [30-34], [35-39], ...
 
-De maneira a conseguir resolver este problema, sem utilizar o módulo CSV de Python, defini as diferentes funções de *parsing* que poderão ser encontradas no ficheiro `tpc1.py`. Para conseguir obter as estatísticas no mesmo ficheiro defini outras funções como a função `divisions_dist` que permite alcançar os resultados.
+De maneira a conseguir resolver este problema, sem utilizar o módulo CSV de Python, defini as diferentes funções de *parsing* que poderão ser encontradas no ficheiro `tpc1.py`. Para conseguir obter as estatísticas no mesmo ficheiro defini outras funções como a função `divisions_dist` que permite obter os resultados da distribuição de idades.
 
 Utilizando o ficheiro `tpc1.py` obtive o seguinte *output*:
 
 ```py
-> python3 tpc1.py
+> cat emd.csv | python3 tpc1.py
 
 Lista de todas as modalidades (Ordem Alfabética):
  - Andebol

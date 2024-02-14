@@ -1,4 +1,5 @@
-FILE_PATH = "emd.csv"
+import sys
+
 TOKEN = ","
 
 #############################
@@ -24,20 +25,19 @@ def parse_fields(fields):
     
     return line_data
 
-def parse_dataset(file_path, token):
+def parse_dataset(token):
     data = []
     column_names = []
-    with open(file_path, 'r') as file:
-        for i,line in enumerate(file):
-            # Split the line into fields using comma as delimiter
-            fields = line.strip().split(token)
+    for i,line in enumerate(sys.stdin):
+        # Split the line into fields using comma as delimiter
+        fields = line.strip().split(token)
 
-            #To store the values for each dict key
-            if (i == 0):
-                column_names = fields
-            else:
-                line_data = parse_fields(fields)
-                data.append(line_data)
+        #To store the values for each dict key
+        if (i == 0):
+            column_names = fields
+        else:
+            line_data = parse_fields(fields)
+            data.append(line_data)
 
     return data
 
@@ -109,7 +109,7 @@ def print_divisions(div, total):
 
 
 def main():
-    emd = parse_dataset(FILE_PATH, TOKEN)
+    emd = parse_dataset(TOKEN)
 
     modalidades = list_modalidades(emd)
     ap_n = perc_ap(emd)
