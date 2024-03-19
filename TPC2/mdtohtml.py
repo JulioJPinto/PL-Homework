@@ -13,8 +13,8 @@ def md_html_heading(input):
     return input
 
 def md_html_bold_italic(input):
-    input = re.sub(r'(\*\*|__)(.*?)\1', r'<b>\2</b>', input,flags=re.MULTILINE)            # Convert **bold** or __bold__
-    input = re.sub(r'(\*|_)(.*?)\1', r'<i>\2</i>', input,flags=re.MULTILINE) 
+    input = re.sub(r'(\*\*|__)(.*?)\1', r'<b>\2</b>', input,flags=re.MULTILINE)
+    input = re.sub(r'(\*|_)(.*?)\1', r'<i>\2</i>', input,flags=re.MULTILINE)
 
     return input
 
