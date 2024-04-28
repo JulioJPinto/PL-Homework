@@ -1,6 +1,6 @@
-# TPC2: 
+# TPC3: 
 
-### Data: 27/02/2024
+### Data: 29/02/2024
 ### Autor: Júlio Pinto A100742
 
 ---
@@ -17,7 +17,6 @@ Utilizando o ficheiro `test.txt` obtive o seguinte resultado:
 
 ```sh
 > cat test.txt | python3 onoff.py
-
 Soma: 3
 Soma: 5
 ```
