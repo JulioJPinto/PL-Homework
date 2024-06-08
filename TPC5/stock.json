@@ -1,0 +1,124 @@
+{
+  "stock": [
+      {
+          "cod": "A01",
+          "nome": "água 0.5L",
+          "quantidade": 8,
+          "preco": 0.7
+      },
+      {
+          "cod": "A02",
+          "nome": "Bolacha",
+          "quantidade": 15,
+          "preco": 1.2
+      },
+      {
+          "cod": "A03",
+          "nome": "Chocolate",
+          "quantidade": 10,
+          "preco": 1.5
+      },
+      {
+          "cod": "A04",
+          "nome": "Refrigerante",
+          "quantidade": 20,
+          "preco": 1.8
+      },
+      {
+          "cod": "A05",
+          "nome": "Sanduíche de Frango",
+          "quantidade": 12,
+          "preco": 3.5
+      },
+      {
+          "cod": "A06",
+          "nome": "Café",
+          "quantidade": 25,
+          "preco": 1.0
+      },
+      {
+          "cod": "A07",
+          "nome": "Salgadinho",
+          "quantidade": 18,
+          "preco": 0.8
+      },
+      {
+          "cod": "A08",
+          "nome": "Suco de Laranja",
+          "quantidade": 30,
+          "preco": 2.0
+      },
+      {
+          "cod": "A09",
+          "nome": "Maçã",
+          "quantidade": 20,
+          "preco": 0.5
+      },
+      {
+          "cod": "A10",
+          "nome": "Pizza",
+          "quantidade": 10,
+          "preco": 4.0
+      },
+      {
+          "cod": "A11",
+          "nome": "Hambúrguer",
+          "quantidade": 15,
+          "preco": 3.0
+      },
+      {
+          "cod": "A12",
+          "nome": "Batata Frita",
+          "quantidade": 20,
+          "preco": 2.5
+      },
+      {
+          "cod": "A13",
+          "nome": "Pastel",
+          "quantidade": 12,
+          "preco": 2.0
+      },
+      {
+          "cod": "A14",
+          "nome": "Água de Coco",
+          "quantidade": 10,
+          "preco": 1.2
+      },
+      {
+          "cod": "A15",
+          "nome": "Sorvete",
+          "quantidade": 8,
+          "preco": 2.8
+      },
+      {
+          "cod": "A16",
+          "nome": "Iogurte",
+          "quantidade": 15,
+          "preco": 1.5
+      },
+      {
+          "cod": "A17",
+          "nome": "Sanduíche de Presunto",
+          "quantidade": 10,
+          "preco": 3.2
+      },
+      {
+          "cod": "A18",
+          "nome": "Sopa",
+          "quantidade": 15,
+          "preco": 2.3
+      },
+      {
+          "cod": "A19",
+          "nome": "Salada de Frutas",
+          "quantidade": 12,
+          "preco": 3.0
+      },
+      {
+          "cod": "A20",
+          "nome": "Torta",
+          "quantidade": 8,
+          "preco": 4.5
+      }
+  ]
+}
